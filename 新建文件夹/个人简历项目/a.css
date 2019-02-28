@@ -1,0 +1,404 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    
+    background-color: #efefef;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+[data-x] .actrivea{
+    border: 20px solid #000;
+}
+[data-x].offset{
+    transform: translateY(100px);
+  }
+  [data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+  }
+  @keyframes slideUp{
+    0%{
+      transform: translateY(-30px);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+.topNavBar {
+    padding: 20px 0 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.5s;
+    color: #b7b7b7;
+
+
+}
+.sticky{
+    background: white;
+    padding: 10px 0;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0,0, 0, 0.8);
+    color: #3d4451;
+
+
+}
+
+ .topNavBar-1{
+     padding: 0 16px;
+ }
+
+.topNavBar-1 .nav {
+    padding-top: 5px;
+    padding-bottom: 2px;
+
+} 
+.topNavBar-1>nav>ul {
+    list-style: none;
+   
+    margin: 0;
+    padding: 0;
+    /* text-decoration: none; */
+}
+
+.topNavBar-1>nav>ul>li {
+    /* list-style: none; */
+    float: left;
+    margin-left: 17px;
+    margin-right: 17px;
+    position: relative;
+}
+
+.topNavBar-1>nav>ul>li>a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-top: 3px solid transparent;
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.topNavBar-1>nav>ul>li.actrive> a::after,
+.topNavBar-1>nav>ul>li.hight> a::after
+ {
+content: '';
+display: block;
+left: 0;
+top: 100%;
+width: 100%;
+height: 3px;
+background: #e06567;
+position: absolute;
+animation: anb  0.7s;
+}
+
+@keyframes anb{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+
+    }
+}
+
+.topNavBar .submenu{
+    top: 100%;
+    margin-top: 4px;
+display: none;
+position: absolute;
+left: 0;
+list-style: none;
+background: white;
+color: #3d4451;
+box-shadow: 0 0 15px  rgba(0,0, 0, 0.8);
+
+
+
+}
+.topNavBar li.actrive> .submenu{
+    display: block;
+    animation: an  0.7s;
+    }
+    @keyframes an{
+        0%{
+            margin-left: 100%;
+        }
+        100%{
+            margin-left: 0;
+    
+        }
+    }
+.topNavBar .submenu>li{
+    white-space: nowrap;
+    padding: 5px 10px;
+
+}
+.topNavBar-1 .logo {
+    font-size: 24px;
+    font-family: "Arial Black";
+    padding-top: 3px;
+    padding-bottom: 4px;
+    text-decoration: none;
+}
+.topNavBar-1 .logo .rs {
+    color: #e6686a;
+}
+.topNavBar-1 .logo .card {
+    color: #9a9da2;
+}
+
+.banner{
+background-image: url(./img/rs-cover.jpg);
+background-size: cover;
+background-position: center center;
+height: 515px;
+
+}
+.banner>.banner1{
+background-color: rgba(0,0, 0, 0.8);
+height: 515px;
+}
+.card1{
+max-width: 940px;
+margin-left: auto;
+margin-right: auto;
+background-color: #ffffff;
+
+}
+.pictureAndText{
+padding: 50px;
+margin-top: -250px;
+}
+.picture{
+float: left;
+}
+.card1 .text{
+float:left;
+width: 470px;
+margin-left: 65px;
+/* display: inline-block; */
+}
+.card1 .welcome{
+background: #e6686a;
+position: relative;
+line-height: 22px;
+padding: 4px 16px;
+color: #fff;
+}
+.welcome1{
+position: absolute;
+border: 14px solid transparent;
+border-left-color: #e6686a;
+border-top-width: 0px;
+padding-left: 20px;
+display: inline-block;
+margin-left: -71px;
+margin-top: 21px;
+}
+.profile>h1{
+margin-top: 18px;
+}
+.profile>hr{
+margin: 15px 0;
+
+}
+hr{
+border-top: 1px solid #DEDEDE;
+}
+.profile dl dt{
+float: left;
+display: block;
+padding: 5px 0;
+width: 30%;
+font-weight: bold;
+
+}
+.profile dl dd{
+float: right;
+display: block;
+padding: 5px 0;
+width: 70%;
+color: #9da0a7;
+}
+.media{
+/* border: 1px solid #000; */
+background: #E6686A;
+text-align: center;
+}
+.media>a{
+display: inline-block;
+width: 40px;
+padding: 5px 0;
+margin: 16px;
+text-align: center;
+line-height: 30px;
+}
+.media>a>img{
+width: 30px;
+height: 30px;
+
+}
+.button{
+border: 1px solid #cdcfd1;
+display: block;
+text-align: center;
+font-size: 14px;
+line-height: 14px;
+padding: 21px 55px;
+margin: 32px 525px;
+color: #3d4451;
+font-weight: bold;
+width: 169px;
+text-decoration: none;
+margin-left: auto;
+margin-right: auto;
+}
+.selfintroduction{
+max-width: 940px;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+font-family: Gill Sans Extrabold, sans-serif;
+font-size: 18px;
+line-height: 1.8;
+}
+.skills{
+max-width: 940px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 60px;
+display: block; 
+}
+
+.skills>h2{
+text-align: center;
+color: #3d4451;
+font-size: 34px;
+line-height: 3.2;
+font-weight: 600;
+text-align: center;
+margin-bottom: 20px;
+}
+.skills>ol{
+background: white;
+box-shadow: 0px 1px 13px 1px rgba(0,0,0,0.3);
+padding: 42px 50px 0;
+
+}
+.skills>ol>li{
+float: left;
+width: 48%;
+font-size: 14px;
+line-height: 1.1;
+list-style: none;
+}
+.skills>ol>li:nth-child(even){
+float: right;
+
+}
+.progressBar{
+height: 5px;
+background: #fae1e1;
+border-radius: 2px;
+margin: 4px 0 35px;
+overflow: hidden;
+}
+.progress{
+background: #e8676b;
+height: 100%;
+width: 50%;
+border-radius: 2px;
+transform: translateX(0);
+transition: all 2s;
+
+}
+section.skills.offset .progress{
+    transform: translateX(-100%);
+}
+.portfolio{
+text-align: center;
+max-width: 940px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 60px;
+display: block;
+}
+.portfolio>nav>ol>li{
+/* float: left; */
+display: inline-block;
+/* text-align: center; */
+cursor: pointer;
+
+}
+
+
+.bar{
+background: white;
+/* display: block; */
+height: 5px;
+border-radius: 2px;
+margin-top: 5px;
+margin-bottom: 28px;
+margin-left: auto;
+margin-right: auto;
+max-width: 230px;
+/* text-align: center; */
+}
+.progress1{
+/* width: 12%;
+margin-left: 0px; */
+height: 100%;
+background: #e8676b;
+border-radius: 2px;
+
+transition: all 1s;
+}
+
+.portfolio>nav .bar.state1 .progress1{
+width: 40px;
+margin-left: 0px;
+/* background: red;     */
+
+}
+.portfolio>nav .bar.state2 .progress1{
+width: 40px;
+margin-left: 70px;
+
+}
+.portfolio>nav .bar.state3 .progress1{
+width: 80px;
+margin-left: 148px;
+/* background: red; */
+
+}
+
+.works{
+position: relative;
+
+}
+.works .small1{
+position: absolute;
+}
+.works .small2{
+position: absolute;
+top: 0;
+left: 644px;
+}
+.works .small3{
+position: absolute;
+top: 298px;
+left: 644px;
+}
