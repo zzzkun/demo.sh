@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+*{box-sizing: border-box;}
+.window{
+    width: 400px;
+    height: 300px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.images{
+  position: relative;
+}
+.images > img{
+position: absolute;
+width: 100%;
+top: 0;
+/* 过渡 */
+transition: all 0.3s;
+}
+.images > img.current{
+    left: 0;
+    /* 改变，使…变形；转换 */
+    transform: translateX(0);
+    z-index: 1;
+}
+.images > img.leave{
+   /* 改变，使…变形；转换 */
+    transform: translateX(100%);
+    z-index: 1;
+}
+.images > img.enter{
+   /* 改变，使…变形；转换 */
+    transform: translateX(-100%);
+    
+}

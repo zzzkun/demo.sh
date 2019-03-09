@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝的轮播</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+        <div class="window">
+                <div class="images" >
+                 <img src="./15707999.jpg" width="400"  height="300" alt="">
+                 <img src="./6807466.jpg" width="400"  height="300" alt="">
+                 <img src="./timg (1).jpg" width="400"  height="300" alt="">
+                 <img src="./timg.jpg" width="400"  height="300" alt="">
+                </div>
+        </div>
+            
+</body>
+<script>
+    $('.images > img:nth-child(1)').addClass('current')
+    $('.images > img:nth-child(2)').addClass('enter')
+    $('.images > img:nth-child(3)').addClass('enter')
+    $('.images > img:nth-child(4)').addClass('enter')
+
+    let n = 1
+    
+    function x(n) {
+        if (n>4) {
+            n = n%4
+            if (n===0) {
+                n = 4
+            }
+            console.log(n)
+        }
+        return n
+        
+    }
+    
+    setInterval(() => {
+        
+        $(`.images > img:nth-child(${x(n)})`).removeClass('current').addClass('leave')
+        .one('transitionend', (e)=>{
+      $(e.currentTarget).removeClass('leave').addClass('enter')
+      
+    })
+        $(`.images > img:nth-child(${x(n+1)}) `).removeClass('enter').addClass('current')
+        n +=1
+    }, 1000);
+</script>
+</html>
