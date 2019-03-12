@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<style>
+
+*{margin: 0;padding: 0;}
+body{background: #F2F2F2}
+.promo{width: 1080px;height: 634px;overflow: hidden;margin: 100px auto;}
+.promoList{display: flex;flex-shrink: 0;transition: 0.2s linear;}
+.promoTitleList{display: flex;height: 30px;text-align: center;background: #E3E2E2;}
+.promoTitleList>span{height: 30px;line-height: 30px;width: 300px;border-bottom: 4px solid #E3E2E2;}
+.promoTitleList>span:hover{cursor: pointer;}
+span.click{background:#F7F6F6;border-bottom: 4px solid #CEA861;}</style>
+<body>
+    <div class="promo">
+        <div class="promoList">
+            <img src="./1.JPG" alt="1" width="1080" height="600">
+            <img src="./2.JPG" alt="2" width="1080" height="600">
+            <img src="./3.JPG" alt="3" width="1080" height="600">
+            <img src="./4.JPG" alt="4" width="1080" height="600">
+        </div>
+        <div class="promoTitleList">
+            <span class="click">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+        </div>
+    </div>
+</body>
+<script>
+$('.promoTitleList').on('click',function(e){
+    $(e.target).addClass('click')
+        .siblings().removeClass('click');
+    $('.promoList').css('margin-left', `${-1080*($(e.target).index())}px`)
+});
+</script>
+</html>
