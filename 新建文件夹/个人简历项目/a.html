@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./a.css">
     <link rel="stylesheet" href="./main.css">
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.12.0/dist/av-min.js"></script>
     <title>简历</title>
 </head>
 <style>
@@ -159,6 +160,38 @@
             </li>
         </ol>
     </section>
+    <section class="message">
+        <h2 >留言</h2>
+        <ol  id="aaa">
+        </ol>
+        <form id="message" style="width: 600px;  margin: 50px auto;">
+            姓名<input type="text" name="name">
+            内容<input type="text" name="content">
+            <input type="submit" name="提交">
+        </form>
+    </section>
+<style>
+
+.message>h2{
+    text-align: center;
+color: #3d4451;
+font-size: 34px;
+line-height: 3.2;
+font-weight: 600;
+text-align: center;
+margin-bottom: 20px;
+}
+.message>ol{
+    max-width: 700px;
+    margin: 0 auto;
+    border-top: 1px solid #ddd;
+}
+.message>ol>li{
+    list-style: none;
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+</style>
     <section data-x id="c" class="portfolio">
         <h2>作品集</h2>
         <nav>
@@ -211,105 +244,86 @@
 
     <script>
         // 延迟loading播放
-        // setTimeout(() => {
+        setTimeout(() => {
             document.getElementById("aadd").classList.remove('loading');
             //    console.log(1)
-        // }, 500);
+        }, 500);
         // 添加 offset 类
         // setTimeout(() => {
-            
+
         let specialTags = document.querySelectorAll('[data-x]')
-        for(let i =0;i<specialTags.length; i++){
-        specialTags[i].classList.add('offset')
+        for (let i = 0; i < specialTags.length; i++) {
+            specialTags[i].classList.add('offset')
         }
         // }, 1500);
-        //   上拉显示导航栏吸顶
-        window.onscroll = function (xxxx) {
-            // console.log(1)
-            if (window.scrollY > 0) {
-                document.getElementById("topNavBar").classList.add('sticky');
-            } else {
-                document.getElementById("topNavBar").classList.remove('sticky');
-            }
 
 
-            let specialTags = document.querySelectorAll('[data-x]')
-            // minIndex 就是里窗口顶部最近的元素
-            let minIndex = 0
-            for (let i = 1; i < specialTags.length; i++) {
-                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
-                        window.scrollY)) {
-                    minIndex = i
-                }
-            }
-                //  for (let i = 0; i < specialTags.length; i++) {
-                     
-                //     specialTags[i].classList.remove('offset')
-                //     console.log(1)
-                //  }
-                specialTags[minIndex].classList.remove('offset')
-            let id =specialTags[minIndex].id
-            let a = document.querySelector('a[href="#'+ id + '"]')
-            let li = a.parentNode
-            let brothersAndMe = li.parentNode.children
-            for(let i=0; i<brothersAndMe.length; i++){
-                brothersAndMe[i].classList.remove('hight')
-            }
-            li.classList.add('hight')
-        }
-        // querySelectorAll返回与指定的选择器组匹配的文档中的元素列表 (使用深度优先的先序遍历文档的节点)。返回的对象是 NodeList 。
-        let menus = document.querySelectorAll('nav.menu > ul > li')
-        //   console.log(menus)
-        for (let index = 0; index < menus.length; index++) {
-            menus[index].onmouseenter = function (x) {
-                // currentTarget 事件属性
-                // currentTarget 事件属性返回其监听器触发事件的节点，即当前处理该事件的元素、文档或窗口。
-                x.currentTarget.classList.add('actrive');
-            }
-            menus[index].onmouseleave = function (x) {
-                x.currentTarget.classList.remove('actrive');
-            }
 
-        }
-        //  获取到每个a标签
-        let atages = document.querySelectorAll('nav.menu > ul > li > a')
-        for (let index = 0; index < atages.length; index++) {
-            atages[index].onclick = function (x) {
-                // 阻止默认的点击事件
-                x.preventDefault()
-                let a = x.currentTarget
-                //  getAttribute() 方法通过名称获取属性的值。
-                let href = a.getAttribute('href') //#a 
-                //  console.log(a.getAttribute('href'))
-                //   querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
-                let element = document.querySelector(href)
-                //   获取对象相对于由offsetParent属性指定的父坐标(css定位的元素或body元素)距离顶端的高度
-                let top = element.offsetTop;
-                //  window.scrollTo(0,top-80)
-                // 滚动的次数
-                let n = 25;
-                let duration = 500 / n;
-                // scrollY 是文档从顶部开始滚动过的像素值  当前的高度
-                let currentTop = window.scrollY
+        var APP_ID = '9y93782q8qLO2iqprE9IdsU8-gzGzoHsz';
+        var APP_KEY = 'PojUAyDnrRxQDycPoyk67yFN';
 
-                let targetTop = top - 80
-                // 要滚动的距离 路程 
-                let distance = (targetTop - currentTop) / n
-                let i = 0;
-                let id = setInterval(() => {
-                    if (i === n) {
-                        window.clearInterval(id)
-                        return
-                    }
-                    i = i + 1;
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
 
-                    window.scrollTo(0, currentTop + distance * i)
-                }, duration);
-            }
 
-        }
+        // var TestObject = AV.Object.extend('aaa');
+        // var testObject = new TestObject();
+        // testObject.save({
+        //     words: 'Hello World!'
+        // }).then(function (object) {
+        //     // alert('LeanCloud Rocks!');
+        // })
+
+
+        var query = new AV.Query('aaa');
+        query.find().then(function (content) {
+           
+           console.log(content)
+           let Array = content.map((item)=> item.attributes)
+           Array.forEach(item => {
+               let li = document.createElement('li')
+               
+               li.innerText = `${item.name}:${item.content}`
+               let list = document.querySelector('#aaa')
+               list.append(li)
+            
+           });
+           console.log(Array)
+        }).then(function (todos) {
+            // 更新成功
+        }, function (error) {
+            // 异常处理
+        });
+        message.addEventListener('submit', function (e) {
+            // 阻止默认事件  点击刷新页面
+            e.preventDefault()
+            let name = message.querySelector('input[name=name]').value;
+            let content = message.querySelector('input[name=content]').value;
+            var TestObject = AV.Object.extend('aaa');
+            var testObject = new TestObject();
+            testObject.save({
+                name: name,
+                content: content
+            }).then(function (object) {
+                let li = document.createElement('li')
+               
+               li.innerText = `${object.attributes.name}:${object.attributes.content}`
+               let list = document.querySelector('#aaa')
+               list.append(li)
+              message.querySelector('input[name=name]').value = '';
+            message.querySelector('input[name=content]').value = ''
+            })
+
+        })
     </script>
+
 </body>
 
+
+<script src="./scrollTo.js"></script>
+<script src="./onscroll.js"></script>
+<script src="./hover.js"></script>
 
 </html>
